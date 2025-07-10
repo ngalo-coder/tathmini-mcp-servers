@@ -1,0 +1,31 @@
+{
+  "name": "tathmini-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for TathminiAI platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node odk-mcp-server.js",
+    "dev": "nodemon odk-mcp-server.js",
+    "start:ai": "node ai-mcp-server.js",
+    "start:report": "node report-mcp-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.5.0",
+    "cors": "^2.8.5",
+    "pdfkit": "^0.13.0",
+    "@modelcontextprotocol/sdk": "^1.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "mcp",
+    "odk",
+    "ai",
+    "research",
+    "tathmini"
+  ],
+  "author": "TathminiAI",
+  "license": "MIT"
+}

@@ -1,0 +1,41 @@
+# // ===== 5. Docker Compose Configuration =====
+# // File: docker-compose.yml
+
+version: '3.8'
+
+services:
+  odk-mcp-server:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - ODK_BASE_URL=${ODK_BASE_URL}
+      - ODK_USERNAME=${ODK_USERNAME}
+      - ODK_PASSWORD=${ODK_PASSWORD}
+    command: node odk-mcp-server.js
+    restart: unless-stopped
+
+  ai-mcp-server:
+    build: .
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    command: node ai-mcp-server.js
+    restart: unless-stopped
+
+  report-mcp-server:
+    build: .
+    ports:
+      - "3003:3003"
+    environment:
+      - NODE_ENV=production
+      - PORT=3003
+    volumes:
+      - ./reports:/app/reports
+    command: node report-mcp-server.js
+    restart: unless-stopped
